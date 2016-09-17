@@ -158,7 +158,6 @@ class DropDownOptionsGenerator {
 
     protected function generateOptions($data) {
         $output = '';
-        $data_attribute_string = '';
         $label = $this->config['option']['label'];
         $value = $this->config['option']['value'];
         $selected = $this->config['option']['selected'];
@@ -169,6 +168,7 @@ class DropDownOptionsGenerator {
 
         foreach ($data as $key => $row) {
             $selected_string = '';
+            $data_attribute_string = '';
 
             if (!empty($data_attributes)) {
                 foreach ($data_attributes as $data_attribute) {
@@ -181,7 +181,7 @@ class DropDownOptionsGenerator {
             if (!empty($selected) && $row->$value == $selected) {
                 $selected_string = "selected='selected'";
             }
-
+            
             if (empty($exclude_condition)) {
                 $output .= sprintf($this->option_format, $row->$value, $selected_string, $data_attribute_string, $row->$label);
             } else {
